@@ -5,6 +5,8 @@ import os
 # Module for reading CSV files
 import csv
 
+
+
 csvpath = os.path.join( 'Resources', 'budget_data.csv')
 
 # # Method 1: Plain Reading of CSV files
@@ -26,14 +28,24 @@ with open(csvpath) as csvfile:
     # Read the header row first (skip this step if there is now header)
     csv_header = next(csvreader)
     print(f"CSV Header: {csv_header}")
-
+    
     # Read each row of data after the header and count number of months
     num_rows = 0
+    PnL_net = 0
+    PnL_change = 0
     for row in csvreader:
         num_rows +=1
+        if row[1] == 0:
+            PnL_net = 0
+        else:
+            PnL_net = int(PnL_net) + int(row[1])
 
-    print ( "Total Months: " + str(num_rows) )
+        if row[1] ==0:
+            PnL_change = 0
+        else:
+            PnL_change = int(row[1])-int(PnL_change)
 
+    print (f"Total Months:  {str(num_rows)}" )
+    print (f"Total: $ {str(PnL_net)}")
+    print (f"{str(PnL_change)}")
         
-
-
