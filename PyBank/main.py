@@ -27,14 +27,14 @@ with open(csvpath) as csvfile:
 
     # Read the header row first (skip this step if there is now header)
     csv_header = next(csvreader)
-    print(f"CSV Header: {csv_header}")
+    
     
     # Read each row of data after the header and count number of months
     num_rows = 0
     PnL_net = 0
     PnL_list = []
     PnL_change_list = [] 
-    
+    x = range(0,86)
     
     for row in csvreader:
         PnL_list.append(row[1])
@@ -50,19 +50,19 @@ with open(csvpath) as csvfile:
         else:
             PnL_net = int(PnL_net) + int(row[1])
         
-            
+        for i in range(len(PnL_list)):
+            PnL_change = int(PnL_list[i]) - int(PnL_list[i-1])
             if PnL_change == 0:
                 PnL_change = 0
             else:
-                PnL_change = PnL_list[1]-PnL_list[0]
                 PnL_change_list.append(PnL_change)
                 print(PnL_change_list)
             
-            for change in PnL_change_list:
-                average_change = int(sum(PnL_change_list)/len(PnL_change_list))
+            
     print(PnL_list)    
     print (f"Total Months:  {str(num_rows)}" )
     print (f"Total: $ {str(PnL_net)}")
+    print(PnL_change_list)
     print (f"Average Change: {str(PnL_change)}")
-    print (PnL_change_list)    
-    print (average_change)
+ 
+   
