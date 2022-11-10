@@ -36,6 +36,9 @@ with open(csvpath) as csvfile:
     PnL_change_list = [] 
     previous = 0
     PnLchange = 0
+    Greatest = 0
+    Lowest = 0
+
     for row in csvreader:
         PnL_list.append(row[1])
         
@@ -61,19 +64,18 @@ with open(csvpath) as csvfile:
             PnLchange = int(current) - int(previous)
         PnL_change_list.append(PnLchange)
         previous = current
-       
-        
 
-            
-    
-
+   
     average_change = int((sum(PnL_change_list))/((len(PnL_change_list))-1))  
             
             
-    print((PnL_change_list))
+    print("Financial Analysis")
+    print("--------------------------------------")
     print (f"Total Months:  {str(num_rows)}" )
     print (f"Total: $ {str(PnL_net)}")
-    print (f"Average Change: {str(average_change)}")
+    print (f"Average Change: $ {str(average_change)}")
+    print (f"Greatest Increase in Profits: $ {max(PnL_change_list)}")
+    print (f"Greatest Decrease in Profits: $ {min(PnL_change_list)}")
 
 
    
