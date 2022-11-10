@@ -34,14 +34,14 @@ with open(csvpath) as csvfile:
     PnL_net = 0
     PnL_list = []
     PnL_change_list = [] 
-    x = range(0,86)
-    
+    previous = 0
+    PnLchange = 0
     for row in csvreader:
         PnL_list.append(row[1])
         
     
 
-        PnL_change = 0
+
         num_rows +=1
         
    
@@ -50,19 +50,30 @@ with open(csvpath) as csvfile:
         else:
             PnL_net = int(PnL_net) + int(row[1])
         
-        for i in range(len(PnL_list)):
-            PnL_change = int(PnL_list[i]) - int(PnL_list[i-1])
-            if PnL_change == 0:
-                PnL_change = 0
-            else:
-                PnL_change_list.append(PnL_change)
-                print(PnL_change_list)
+        
+    for current in PnL_list:
+        
+        if current == "1088983":
+            PnLchange = 0
+        elif previous == "382539":
+            break
+        else:
+            PnLchange = int(current) - int(previous)
+        PnL_change_list.append(PnLchange)
+        previous = current
+       
+        
+
+            
+    
+
+    average_change = int((sum(PnL_change_list))/((len(PnL_change_list))-1))  
             
             
-    print(PnL_list)    
+    print((PnL_change_list))
     print (f"Total Months:  {str(num_rows)}" )
     print (f"Total: $ {str(PnL_net)}")
-    print(PnL_change_list)
-    print (f"Average Change: {str(PnL_change)}")
- 
+    print (f"Average Change: {str(average_change)}")
+
+
    
