@@ -1,5 +1,5 @@
 # python-challenge
-This is a Homework that I completed on 11.10.22 in VSC and Jupyter Notebook.
+This is a project that I completed on 11.10.22 in VSC and Jupyter Notebook.
 
 #pybank is my analysis of a csv budget data file where I analyzed the profit and loss over time.
 
