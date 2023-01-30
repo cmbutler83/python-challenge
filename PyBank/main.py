@@ -77,5 +77,20 @@ with open(csvpath) as csvfile:
     print (f"Greatest Increase in Profits: $ {max(PnL_change_list)}")
     print (f"Greatest Decrease in Profits: $ {min(PnL_change_list)}")
 
+    with open ("mainoutput.txt","w") as f:
+    f.write("Financial Analysis")
+    f.write("\n")
+    f.write("--------------------------------------")
+    f.write("\n")
+    f.write(f"Total Months:  " )
+    f.write("\n")
+    f.write(f"Total: $ ")
+    f.write("\n")
+    f.write(f"Average Change: $ ")
+    f.write("\n")
+    f.write(f"Greatest Increase in Profits: $ ")
+    f.write("\n")
+    f.write(f"Greatest Decrease in Profits: $ ")
+f.close()
 
    
